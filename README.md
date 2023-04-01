@@ -5,6 +5,8 @@ This model achieves 98% accuracy on the testing set. The underlying architecture
 
 <img src="static/webapp.jpg" width="75%">
 
+# References
+
 Kaggle dataset: https://www.kaggle.com/datasets/gpiosenka/cats-in-the-wild-image-classification
 
 Huggingface model: https://huggingface.co/therealcyberlord/bigcatvit
