@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-12 text-center">
+            <p style="font-family: 'Garamond', serif; font-size: 20px;"> Made by Xingyu. You can check out my other projects here: </p>
+        </div>
+        <div class="col-md-4 text-center">
+            <a href="https://github.com/therealcyberlord" target="_blank">
+                <img src="{{ url_for('static', filename='github-mark.png') }}" alt="Github" class="img-fluid"
+                    height="200px" width="200px">
+            </a>
+        </div>
+        <div class="col-md-4 text-center">
+            <a href="https://www.kaggle.com/therealcyberlord" target="_blank">
+                <img src="{{ url_for('static', filename='kaggle.png') }}" alt="Kaggle" class="img-fluid" height="250px"
+                    width="250px">
+            </a>
+        </div>
+        <div class="col-md-4 text-center">
+            <a href="https://huggingface.co/therealcyberlord" target="_blank">
+                <img src="{{ url_for('static', filename='huggingface.png') }}" alt="Huggingface" class="img-fluid"
+                    height="200px" width="200px">
+            </a>
+        </div>
+    </div>
+
+    <footer class="fixed-bottom bg-light py-2">
+        <div class="container-fluid text-end">
+            <span>Back to home</span><a href="{{ url_for('home') }}"><span class="fs-3">&#10148;</span></a>
+        </div>
+    </footer>
+
+{% endblock %}

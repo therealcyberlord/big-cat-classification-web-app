@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Big Cat Classifier</h1>
+    <form action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="image">Select an image to classify:</label>
+            <input type="file" class="form-control-file" id="image" name="image">
+        </div>
+        <button type="submit" class="btn btn-primary">Classify</button>
+        <br>
+    </form>
+
+    {% if classification_results %}
+    <img src="{{path}}">
+    <p>Classification Results</p>
+    {% for result in classification_results %}
+    <pre> {{ result['label'] }} {{ result['score'] }} </pre>
+    {% endfor %}
+    {% endif %}
+    
+</div>
+
+{% endblock %}

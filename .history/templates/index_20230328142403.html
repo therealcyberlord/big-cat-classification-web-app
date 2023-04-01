@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Big Cat Classifier{% endblock %}
+{% block content %}
+<div class="container-fluid bg-light"
+    style="background-image: url('https://source.unsplash.com/RHBSWLqWiCk/1600x900'); background-size: cover; background-position: center; height: 100vh;">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-md-6 text-center">
+            <h1 class="display-4 text-white mb-4">Big Cat Classifier</h1>
+            <form action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data" class="mb-4">
+                <div class="form-group">
+                    <label for="image" class="text-white">Select an image to classify:</label>
+                    <input type="file" class="form-control-file" id="image" name="image">
+                </div>
+                <button type="submit" class="btn btn-primary">Classify</button>
+            </form>
+            {% if classification_results %}
+            <div class="bg-white py-4 px-5 rounded">
+                {% set path = url_for("uploaded_file", filename=filename) %}
+                <img src="{{ path }}" alt="Uploaded image" class="img-fluid rounded mb-4">
+                <h3 class="mb-3">Classification Results</h3>
+                <div class="list-group">
+                    {% for result in classification_results %}
+                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>{{ result['label'] }}</span>
+                        <span class="badge bg-primary rounded-pill">{{ result['score']|round(3) }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

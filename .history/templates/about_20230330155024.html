@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-12 text-center">
+            <p style="font-family: 'Garamond', serif; font-size: 20px;"> Made by Xingyu. The model is a vision
+                transformer that is fine-tuned a dataset of big cats. </p>
+        </div>
+        <div class="col-md-4 text-center">
+            <a href="https://github.com/therealcyberlord" target="_blank">
+                <img src="{{ url_for('static', filename='github-mark.png') }}" alt="Github" class="img-fluid"
+                    height="200px" width="200px">
+            </a>
+        </div>
+        <div class="col-md-4 text-center">
+            <a href="https://www.kaggle.com/therealcyberlord" target="_blank">
+                <img src="{{ url_for('static', filename='kaggle.png') }}" alt="Kaggle" class="img-fluid" height="200px"
+                    width="200px">
+            </a>
+        </div>
+        <div class="col-md-4 text-center">
+            <a href="https://huggingface.com/therealcyberlord" target="_blank">
+                <img src="{{ url_for('static', filename='huggingface.png') }}" alt="Huggingface" class="img-fluid"
+                    height="200px" width="200px">
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

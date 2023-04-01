@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Big Cat Classifier{% endblock %}
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {% for message in messages %}
+        {{ message }}
+        {% endfor %}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+{% endwith %}
+
+        <div class="col-md-6">
+            <form action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data" class="mb-4">
+                <div class="mb-3">
+                    <label for="image" class="form-label text-secondary h4">Select an image to classify:</label>
+                    <input type="file" class="form-control" id="image" name="image">
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg">Classify</button>
+            </form>
+        </div>
+        {% if classification_results %}
+        <div class="col-md-3">
+            {% set path = url_for("uploaded_file", filename=filename) %}
+            <img src="{{ path }}" alt="Uploaded image" class="img-fluid rounded mb-4" width="100%">
+            <div class="list-group">
+                {% set top_result = classification_results[0] %}
+                <div class="list-group-item d-flex justify-content-between align-items-center bg-light text-dark">
+                    <span class="text-secondary h5">{{ top_result['label'] }}</span>
+                    <span class="badge bg-primary rounded-pill">{{ top_result['score']|round(3) }}</span>
+                </div>
+            </div>
+            <p class="text-secondary mt-3">Based on our machine learning model, we believe this image depicts a
+                {{ top_result['label'] }} with {{ top_result['score']|round(3) }} confidence.</p>
+        </div>
+        <div class="col-md-3">
+            <p class="text-secondary mt-3">Here are some other possible classifications for this image:</p>
+            <div class="list-group">
+                {% for result in classification_results[1:] %}
+                <div class="list-group-item d-flex justify-content-between align-items-center">
+                    <span class="text-secondary h5">{{ result['label'] }}</span>
+                    <span class="badge bg-primary rounded-pill">{{ result['score']|round(3) }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+{% endblock %}

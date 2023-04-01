@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My First HTML Page</title>
+</head>
+<body>
+	<h1>Welcome to my page</h1>
+
+    {% for x in range(10) %}
+        {% if x % 2 == 1 %}
+        <p> Hello {{x}} </p>
+
+        {% endif %}
+    {% endfor %}
+
+</body>
+</html>

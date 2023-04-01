@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}About{% endblock %}
+{% block content %}
+
+<p> Made by Xingyu. The model is a vision transformer that is fine-tuned a dataset of big cats.  </p>
+
+<a href="https://github.com/therealcyberlord" target="_blank">
+    <img src="{{ url_for('static', filename='github-mark.png') }}" alt="Github" class="img-fluid">
+</a>
+
+<a href="https://www.kaggle.com/therealcyberlord" target="_blank">
+    <img src="{{ url_for('static', filename='kaggle.png') }}" alt="Kaggle" class="img-fluid">
+</a>
+
+<a href="https://huggingface.com/therealcyberlord" target="_blank">
+    <img src="{{ url_for('static', filename='huggingface.png') }}" alt="Huggingface" class="img-fluid">
+</a>
+
+{% endblock %}
